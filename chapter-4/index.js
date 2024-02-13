@@ -1,22 +1,22 @@
-// Bubble Sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. The pass through the list is repeated until the list is sorted. 
+// Bubble Sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. The pass through the list is repeated until the list is sorted.
 
 function bubbleSort(array) {
-    let lastIdx = array.length - 1
-    let sorted = false
+    let lastIdx = array.length - 1;
+    let sorted = false;
 
-    while(!sorted) {
-        sorted = true
-        for (let i = 0; i < lastIdx; i ++) {
-            if(array[i] > array[i + 1]) {
-                [array[i], array[i+1]] = [array[i+1], array[i]]
+    while (!sorted) {
+        sorted = true;
+        for (let i = 0; i < lastIdx; i++) {
+            if (array[i] > array[i + 1]) {
+                [array[i], array[i + 1]] = [array[i + 1], array[i]];
                 sorted = false;
             }
         }
         lastIdx--;
     }
-    return array
+    return array;
 }
-console.log(bubbleSort([3,5,6,7,2,8,1]))
+console.log(bubbleSort([3, 5, 6, 7, 2, 8, 1]));
 
 //Insertion Sort: This algorithm builds the final sorted array one item at a time, by repeatedly taking the next item from the unsorted part of the array and inserting it into its correct position in the sorted part of the array.
 
@@ -32,7 +32,7 @@ function insertionSort(arr) {
     }
     return arr;
 }
-console.log(insertionSort([5,8,3,1]))
+console.log(insertionSort([5, 8, 3, 1]));
 
 //Selection Sort: This algorithm divides the input array into two parts: a sorted subarray and an unsorted subarray. It repeatedly selects the smallest (or largest, depending on the sorting order) element from the unsorted subarray and moves it to the end of the sorted subarray.
 
@@ -50,7 +50,7 @@ function selectionSort(arr) {
     }
     return arr;
 }
-console.log(selectionSort([9,5,7,1]))
+console.log(selectionSort([9, 5, 7, 1]));
 
 //Merge Sort: This algorithm follows the divide-and-conquer approach. It divides the input array into two halves, recursively sorts each half, and then merges the sorted halves to produce the final sorted array.
 
@@ -83,7 +83,7 @@ function merge(left, right) {
 
     return result.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
 }
-console.log(mergeSort([9,8,7,6]))
+console.log(mergeSort([9, 8, 7, 6]));
 
 //Quick Sort: This algorithm also follows the divide-and-conquer approach. It selects a "pivot" element from the array and partitions the other elements into two subarrays according to whether they are less than or greater than the pivot. It then recursively sorts the subarrays.
 
@@ -109,8 +109,7 @@ function quickSort(arr) {
 
     return quickSort(left).concat(mid, quickSort(right));
 }
-console.log(quickSort([7,6,5,4]))
-
+console.log(quickSort([7, 6, 5, 4]));
 
 //Heap Sort: This algorithm treats the input array as a binary tree and uses the heap data structure to sort the elements. It repeatedly extracts the maximum (or minimum) element from the heap and reconstructs the heap until all elements are sorted.
 
@@ -148,5 +147,4 @@ function maxHeapify(arr, i, length) {
         maxHeapify(arr, largest, length);
     }
 }
-console.log(heapSort([5,4,3,2]))
-
+console.log(heapSort([5, 4, 3, 2]));
