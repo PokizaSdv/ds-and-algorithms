@@ -43,3 +43,24 @@ function printEvens2(upperLimit) {
     
 }
 printEvens2(9)
+
+
+//Function that returns the sum of all numbers of an array after the numbers have been doubled
+
+function doubleThenSum(array) {
+    let doubledArray = []
+    for(let i = 0; i < array.length; i++) {
+        doubledArray.push(array[i] * 2)
+    }
+    let sum = 0;
+    for(const num of doubledArray) {
+        sum += num
+    }
+    return sum;
+}
+console.log(doubleThenSum([2,4,6]))
+
+function doubleThenSum2(array) {
+    return array.map(num => num * 2).reduce((acc, curr) => acc + curr, 0)
+}
+console.log(doubleThenSum2([2,4,6]))
