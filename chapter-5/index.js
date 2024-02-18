@@ -20,3 +20,26 @@ function selectionSort(array) {
     return array
 }
 console.log(selectionSort([3,8,7,2,9,4,5,1]))
+
+
+//function, that prints only even numbers that less than given number;
+function printEvens1(upperLimit) {
+    let number = 2;
+    while (number <= upperLimit) {
+        if(number % 2 === 0) {
+            console.log(number)
+        }
+        number +=1
+    }
+} 
+printEvens1(15)
+//----------------------
+function printEvens2(upperLimit) {
+    let number = 2;
+    while (number <= upperLimit) {
+        console.log(number)
+        number +=2
+    }
+    
+}
+printEvens2(9)
