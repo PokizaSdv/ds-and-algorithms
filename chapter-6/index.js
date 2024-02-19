@@ -29,3 +29,30 @@ function intersection(arr1, arr2) {
     return result
 }
 console.log(intersection([1,3,5,7], [3,6,7,9]))
+
+// function, that checks if an array of numbers contains a pair of two numbers that add up to 10
+function twoSum(array) {
+    for(let i = 0; i < array.length; i++) {
+        for (let j = 0; j < array.length; j++) {
+            if(i !== j && array[i] + array[j] === 10) {
+                return true
+            } 
+        }
+    }
+    return false
+}
+console.log(twoSum([1,2,3,4,5]))
+//-----------------------------------------------
+function twoSum2(array) {
+    const seen = {};
+    for (let i = 0; i < array.length; i++) {
+        const complement = 10 - array[i];
+        if (seen[complement]) {
+            return true;
+        }
+        seen[array[i]] = true;
+    }
+    return false;
+}
+
+console.log(twoSum2([1, 2, 3, 4, 5]));
