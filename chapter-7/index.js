@@ -71,8 +71,28 @@ function averageCelsius(valuesInFahrenheit) {
 console.log(averageCelsius([100, 98, 32]));
 //---------------------------------------------
 function averageCelsius2(Fs) {
-    const Cs = Fs.map((F) => (F - 32) / 1.8)
-    const sum = Cs.reduce((acc, C) => acc + C, 0)
+    const Cs = Fs.map((F) => (F - 32) / 1.8);
+    const sum = Cs.reduce((acc, C) => acc + C, 0);
     return sum / Cs.length;
 }
-console.log(averageCelsius2([100, 98, 32]))
+console.log(averageCelsius2([100, 98, 32]));
+
+//function that accepts an array of newly produced clothing items and creates text for every possible label
+function markInventory(clothingItems) {
+    let clothingOptions = [];
+    for (let item of clothingItems) {
+        for (let size = 1; size < 6; size++) {
+            clothingOptions.push(item + " Size: " + size);
+        }
+    }
+    return clothingOptions;
+}
+console.log(markInventory(["Purple Shirt", "Green Shirt"]));
+//-------------------------------------
+function markInventory2(clothingItems) {
+    return clothingItems.flatMap((item) => {
+        return Array.from({length: 5}, (_, i) => item + " Size: " + (i + 1))
+    })
+}
+console.log(markInventory2(["Purple Shirt", "Green Shirt"]));
+//In this version, flatMap is used to both iterate over each clothing item and generate an array of strings for each item. Within the flatMap callback function, Array.from is used to create an array of length 5 (for sizes 1 through 5), and each element of this array is constructed as a string representing the clothing option. The i + 1 part ensures that sizes start from 1 instead of 0.
