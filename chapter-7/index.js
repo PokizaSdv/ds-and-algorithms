@@ -22,7 +22,6 @@ console.log(averageSumOfEvenNums2([1, 2, 3, 4, 5, 6]));
 
 //function that returns every combination of two-character strings built from an array of single charactrs.
 //["a", "b", "c", "d"] => ["ab", "ac", "ad", "ba", "bc", "bd", "ca", "cb", "cd", "da", "db", "dc"]
-
 function wordBuilder(array) {
     let collection = [];
     for (let i = 0; i < array.length; i++) {
@@ -43,9 +42,7 @@ function wordBuilder2(array) {
 }
 console.log(wordBuilder(["a", "b", "c", "d"]));
 // The flatMap() method in JavaScript is used to both map and flatten arrays. It first applies a mapping function to each element of the array and then flattens the result into a new array. Essentially, it's a combination of map() and flat() methods.
-
 // Here's how it works:
-
 // It applies a mapping function to each element of the array.
 // The mapping function can return either a single value or an array of values.
 // flatMap() then flattens the result into a new array. If the mapping function returns an array, flatMap() concatenates those arrays into the new array it returns.
@@ -91,8 +88,54 @@ console.log(markInventory(["Purple Shirt", "Green Shirt"]));
 //-------------------------------------
 function markInventory2(clothingItems) {
     return clothingItems.flatMap((item) => {
-        return Array.from({length: 5}, (_, i) => item + " Size: " + (i + 1))
-    })
+        return Array.from({ length: 5 }, (_, i) => item + " Size: " + (i + 1));
+    });
 }
 console.log(markInventory2(["Purple Shirt", "Green Shirt"]));
 //In this version, flatMap is used to both iterate over each clothing item and generate an array of strings for each item. Within the flatMap callback function, Array.from is used to create an array of length 5 (for sizes 1 through 5), and each element of this array is constructed as a string representing the clothing option. The i + 1 part ensures that sizes start from 1 instead of 0.
+
+//function that accepts an array of arrays, where the inner contain 1s and 0s. and returns how many 1s there?
+function countOnes(array) {
+    let counter = 0;
+    for (let subArr of array) {
+        for (let num of subArr) {
+            if (num === 1) {
+                counter += 1;
+            }
+        }
+    }
+    return counter;
+}
+console.log(
+    countOnes([
+        [1, 0, 1, 0, 1, 0],
+        [1, 1, 0, 0, 1, 0],
+        [0, 0, 0, 1, 1, 0]
+    ])
+);
+//----------------------------------
+function countOnes2(array) {
+    return array
+        .flatMap((subArr) => subArr)
+        .reduce((counter, num) => counter + num, 0);
+}
+console.log(
+    countOnes2([
+        [1, 0, 1, 0, 1, 0],
+        [1, 1, 0, 0, 1, 0],
+        [0, 0, 0, 1, 1, 0]
+    ])
+);
+//------------------------------
+function countOnes3(array) {
+    return array
+        .flatMap((subArr) => subArr) // Flatten the array of arrays into a single array
+        .reduce((counter, num) => counter + (num === 1 ? 1 : 0), 0); // Increment the counter only if num is 1
+}
+console.log(
+    countOnes3([
+        [1, 0, 1, 0, 1, 0],
+        [1, 1, 0, 0, 1, 0],
+        [0, 0, 0, 1, 1, 0]
+    ])
+);
