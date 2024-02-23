@@ -139,3 +139,28 @@ console.log(
         [0, 0, 0, 1, 1, 0]
     ])
 );
+
+
+//function, that checks is the string palindrome? A palindrome is a word or phrase than reads the same both forward and backward. ex: "racecar" "deified" "kayak" 
+function isPalindrome(string) {
+    let left = 0
+    let right = string.length - 1;
+
+    while (left < string.length / 2) {
+        if(string[left] !== string[right]) {
+            false
+        }
+        left++;
+        right--
+    }
+    return true;
+}
+console.log(isPalindrome("racecar"))
+//----------------------------------------------
+function isPalindrome2(string) {
+    let reversedStr = string.split("").reverse().join("");
+    return string.toLowerCase() === reversedStr.toLowerCase()
+}
+console.log(isPalindrome2("Madam"))
+console.log(isPalindrome2("Hey"))
+
