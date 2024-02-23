@@ -164,3 +164,20 @@ function isPalindrome2(string) {
 console.log(isPalindrome2("Madam"))
 console.log(isPalindrome2("Hey"))
 
+//function, that accepts an array of numbers and returns the product of every combination of two numbers
+//[1,2,3,4,5] => [2,3,4,5,6,8,10,12,15,20]
+function twoPairProduct(array) {
+    let products = []
+    for(let i = 0; i < array.length - 1; i++) {
+        for(let j = i + 1; j < array.length; j++) {
+            products.push(array[i] * array[j])
+        }
+    }
+    return products;
+}
+console.log(twoPairProduct([1,2,3,4,5]))
+//--------------------------------------------
+function twoPairProduct2(array) {
+    return array.flatMap((num, i) => array.slice(i + 1).map(secondNum => num * secondNum))
+}
+console.log(twoPairProduct2([1,2,3,4,5]))
