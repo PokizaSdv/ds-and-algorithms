@@ -181,3 +181,21 @@ function twoPairProduct2(array) {
     return array.flatMap((num, i) => array.slice(i + 1).map(secondNum => num * secondNum))
 }
 console.log(twoPairProduct2([1,2,3,4,5]))
+
+
+//function, that takes 2 arrays and computes the product of every number from one array by every number of a second array
+function twoNumProducts(arr1, arr2) {
+    let products = []
+    for (let i = 0; i < arr1.length; i++) {
+        for (let j = 0; j < arr2.length; j++) {
+            products.push(arr1[i] * arr2[j])
+        }
+    }
+    return products
+}
+console.log(twoNumProducts([1,2,3], [10,100,1000]))
+//------------------------------------
+function twoNumProducts2(arr1, arr2) {
+    return arr1.flatMap(num1 => arr2.map((num2) => num1 * num2))
+}
+console.log(twoNumProducts2([1,2,3], [10, 100, 1000]))
