@@ -140,44 +140,88 @@ console.log(
     ])
 );
 
-
-//function, that checks is the string palindrome? A palindrome is a word or phrase than reads the same both forward and backward. ex: "racecar" "deified" "kayak" 
+//function, that checks is the string palindrome? A palindrome is a word or phrase than reads the same both forward and backward. ex: "racecar" "deified" "kayak"
 function isPalindrome(string) {
-    let left = 0
+    let left = 0;
     let right = string.length - 1;
 
     while (left < string.length / 2) {
-        if(string[left] !== string[right]) {
-            false
+        if (string[left] !== string[right]) {
+            false;
         }
         left++;
-        right--
+        right--;
     }
     return true;
 }
-console.log(isPalindrome("racecar"))
+console.log(isPalindrome("racecar"));
 //----------------------------------------------
 function isPalindrome2(string) {
     let reversedStr = string.split("").reverse().join("");
-    return string.toLowerCase() === reversedStr.toLowerCase()
+    return string.toLowerCase() === reversedStr.toLowerCase();
 }
-console.log(isPalindrome2("Madam"))
-console.log(isPalindrome2("Hey"))
+console.log(isPalindrome2("Madam"));
+console.log(isPalindrome2("Hey"));
 
 //function, that accepts an array of numbers and returns the product of every combination of two numbers
 //[1,2,3,4,5] => [2,3,4,5,6,8,10,12,15,20]
 function twoPairProduct(array) {
-    let products = []
-    for(let i = 0; i < array.length - 1; i++) {
-        for(let j = i + 1; j < array.length; j++) {
-            products.push(array[i] * array[j])
+    let products = [];
+    for (let i = 0; i < array.length - 1; i++) {
+        for (let j = i + 1; j < array.length; j++) {
+            products.push(array[i] * array[j]);
         }
     }
     return products;
 }
-console.log(twoPairProduct([1,2,3,4,5]))
+console.log(twoPairProduct([1, 2, 3, 4, 5]));
 //--------------------------------------------
 function twoPairProduct2(array) {
-    return array.flatMap((num, i) => array.slice(i + 1).map(secondNum => num * secondNum))
+    return array.flatMap((num, i) =>
+        array.slice(i + 1).map((secondNum) => num * secondNum)
+    );
 }
-console.log(twoPairProduct2([1,2,3,4,5]))
+console.log(twoPairProduct2([1, 2, 3, 4, 5]));
+
+//function, that takes 2 arrays and computes the product of every number from one array by every number of a second array
+function twoNumProducts(arr1, arr2) {
+    let products = [];
+    for (let i = 0; i < arr1.length; i++) {
+        for (let j = 0; j < arr2.length; j++) {
+            products.push(arr1[i] * arr2[j]);
+        }
+    }
+    return products;
+}
+console.log(twoNumProducts([1, 2, 3], [10, 100, 1000]));
+//------------------------------------
+function twoNumProducts2(arr1, arr2) {
+    return arr1.flatMap((num1) => arr2.map((num2) => num1 * num2));
+}
+console.log(twoNumProducts2([1, 2, 3], [10, 100, 1000]));
+
+//function, that returns true if the array is a "100-sum-array" and false if it is not
+function oneHundredSum(array) {
+    let left = array[0];
+    let right = array.length - 1;
+    while (left < array.length / 2) {
+        if (array[left] + array[right] === 100) {
+            return true;
+        }
+        left++;
+        right--;
+    }
+    return false;
+}
+console.log(oneHundredSum([50, 5, 10, 4, 10, 50, 10]));
+
+function oneHundredSum2(array) {
+    for (let i = 0; i < array.length; i++) {
+        for (let j = i + 1; j < array.length; j++) {
+            if (array[i] + array[j] === 100) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
