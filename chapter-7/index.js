@@ -225,3 +225,4 @@ function oneHundredSum2(array) {
     }
     return false;
 }
+console.log(oneHundredSum([50, 5, 10, 4, 10, 50, 10]));
