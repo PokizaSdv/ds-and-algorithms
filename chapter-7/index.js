@@ -201,10 +201,11 @@ function twoNumProducts2(arr1, arr2) {
 console.log(twoNumProducts2([1, 2, 3], [10, 100, 1000]));
 
 //function, that returns true if the array is a "100-sum-array" and false if it is not
+//1-st approach didn't work properly:
 function oneHundredSum(array) {
     let left = array[0];
     let right = array.length - 1;
-    while (left < array.length / 2) {
+    while (left < right) {
         if (array[left] + array[right] === 100) {
             return true;
         }
@@ -213,8 +214,8 @@ function oneHundredSum(array) {
     }
     return false;
 }
-console.log(oneHundredSum([50, 5, 10, 4, 10, 50, 10]));
-
+console.log(oneHundredSum([50, 5, 10, 4, 10, 50]));
+//--------------------------------------
 function oneHundredSum2(array) {
     for (let i = 0; i < array.length; i++) {
         for (let j = i + 1; j < array.length; j++) {
@@ -225,4 +226,47 @@ function oneHundredSum2(array) {
     }
     return false;
 }
-console.log(oneHundredSum([50, 5, 10, 4, 10, 50, 10]));
+console.log(oneHundredSum2([50, 5, 10, 4, 10, 50, 10]));
+
+//function that merges two sorted arrays together to create a new sorted array containing all the values from both arrays
+function mergeTwoSortedArrays(array1, array2) {
+    let newArr = [];
+    let array1pointer = 0;
+    let array2pointer = 0;
+    while (array1pointer < array1.length || array2pointer < array2.length) {
+        if (!array1[array1pointer]) {
+            newArr.push(array2[array2pointer]);
+            array2pointer++;
+        } else if (!array2[array2pointer]) {
+            newArr.push(array1[array1pointer]);
+            array1pointer++;
+        } else if (array1[array1pointer] < array2[array2pointer]) {
+            newArr.push(array1[array1pointer]);
+            array1pointer++;
+        } else {
+            newArr.push(array2[array2pointer]);
+            array2pointer++;
+        }
+    }
+    return newArr;
+}
+console.log(merge([1, 4, 8, 10, ], [2, 5, 7, 9]));
+//-------------------------------------------------
+const mergeTwoSortedArrays = (array1, array2) => {
+    const mergedArrays = [];
+    let i = 0;
+    let j = 0;
+    const totalElements = array1.length + array2.length;
+
+    while (i + j < totalElements) {
+        if (array1[i] > array2[j] || i >= array1.length) {
+            mergedArrays.push(array2[j]);
+            j++;
+        } else {
+            mergedArrays.push(array1[i]);
+            i++;
+        }
+    }
+    return mergedArrays;
+};
+console.log(merge([1, 4, 8, 10, ], [2, 5, 7, 9]));
